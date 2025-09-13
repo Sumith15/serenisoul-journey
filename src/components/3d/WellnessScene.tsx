@@ -2,6 +2,10 @@ import { Canvas } from '@react-three/fiber';
 import { OrbitControls, Environment, PerspectiveCamera, Stars, Sparkles } from '@react-three/drei';
 import { FloatingElements } from './FloatingElements';
 import { ParticleField } from './ParticleField';
+import { DynamicSphere } from './DynamicSphere';
+import { WaveField } from './WaveField';
+import { EnergyRings } from './EnergyRings';
+import { LightBeams } from './LightBeams';
 import { Suspense } from 'react';
 
 export const WellnessScene = () => {
@@ -45,6 +49,12 @@ export const WellnessScene = () => {
           {/* 3D Elements */}
           <FloatingElements />
           <ParticleField />
+          <DynamicSphere position={[-6, 0, 2]} scale={1.2} />
+          <DynamicSphere position={[6, -2, 0]} scale={0.8} />
+          <DynamicSphere position={[0, 4, -3]} scale={1.0} />
+          <WaveField />
+          <EnergyRings />
+          <LightBeams />
           
           {/* Environment */}
           <Environment preset="sunset" />
