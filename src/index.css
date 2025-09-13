@@ -2,41 +2,78 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
+/* SereniSpace Design System - Mental Wellness App
+All colors MUST be HSL for proper theming.
 */
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    /* Core Wellness Color Palette */
+    --background: 210 100% 98%;
+    --foreground: 215 25% 20%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card: 210 100% 98%;
+    --card-foreground: 215 25% 20%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover: 210 100% 98%;
+    --popover-foreground: 215 25% 20%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    /* Primary - Calming Ocean Blue */
+    --primary: 204 94% 65%;
+    --primary-foreground: 210 100% 98%;
+    --primary-glow: 204 94% 75%;
+    --primary-deep: 204 94% 45%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    /* Secondary - Soft Sky */
+    --secondary: 193 100% 92%;
+    --secondary-foreground: 204 94% 35%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    /* Wellness Green - Growth & Healing */
+    --wellness: 152 69% 65%;
+    --wellness-foreground: 210 100% 98%;
+    --wellness-soft: 152 40% 85%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    /* Calm Purple - Mindfulness */
+    --calm: 264 50% 70%;
+    --calm-foreground: 210 100% 98%;
+    --calm-soft: 264 30% 85%;
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    /* Warm Support - Encouragement */
+    --support: 32 95% 75%;
+    --support-foreground: 215 25% 20%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --muted: 193 50% 90%;
+    --muted-foreground: 215 15% 50%;
 
-    --radius: 0.5rem;
+    --accent: 152 40% 85%;
+    --accent-foreground: 215 25% 20%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 210 100% 98%;
+
+    --border: 193 30% 85%;
+    --input: 193 30% 90%;
+    --ring: 204 94% 65%;
+
+    --radius: 1rem;
+
+    /* Beautiful Gradients */
+    --gradient-hero: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--wellness)), hsl(var(--calm)));
+    --gradient-wellness: linear-gradient(180deg, hsl(var(--wellness-soft)), hsl(var(--wellness)));
+    --gradient-calm: linear-gradient(135deg, hsl(var(--calm-soft)), hsl(var(--primary-glow)));
+    --gradient-support: linear-gradient(45deg, hsl(var(--support)), hsl(var(--primary-glow)));
+    --gradient-ocean: linear-gradient(180deg, hsl(var(--primary-glow)), hsl(var(--primary-deep)));
+
+    /* Elegant Shadows */
+    --shadow-wellness: 0 10px 40px -12px hsl(var(--wellness) / 0.4);
+    --shadow-calm: 0 10px 40px -12px hsl(var(--calm) / 0.3);
+    --shadow-float: 0 20px 60px -15px hsl(var(--primary) / 0.2);
+    --shadow-glow: 0 0 50px hsl(var(--primary-glow) / 0.3);
+
+    /* Smooth Animations */
+    --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-float: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-glow: box-shadow 0.3s ease-out;
 
     --sidebar-background: 0 0% 98%;
 
@@ -101,5 +138,78 @@ All colors MUST be HSL.
 
   body {
     @apply bg-background text-foreground;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  }
+}
+
+@layer components {
+  /* Wellness Component Styles */
+  .hero-gradient {
+    background: var(--gradient-hero);
+  }
+  
+  .wellness-card {
+    @apply bg-card border border-border rounded-lg shadow-lg transition-all duration-300;
+    box-shadow: var(--shadow-float);
+  }
+  
+  .wellness-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-glow);
+  }
+  
+  .floating-element {
+    animation: float 6s ease-in-out infinite;
+  }
+  
+  .floating-element:nth-child(2) {
+    animation-delay: -2s;
+  }
+  
+  .floating-element:nth-child(3) {
+    animation-delay: -4s;
+  }
+  
+  .text-gradient {
+    background: var(--gradient-hero);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  
+  .btn-wellness {
+    @apply bg-wellness text-wellness-foreground hover:bg-wellness/90 shadow-lg;
+    box-shadow: var(--shadow-wellness);
+    transition: var(--transition-smooth);
+  }
+  
+  .btn-calm {
+    @apply bg-calm text-calm-foreground hover:bg-calm/90 shadow-lg;
+    box-shadow: var(--shadow-calm);
+    transition: var(--transition-smooth);
+  }
+  
+  .glass-effect {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-20px) rotate(180deg);
+  }
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 20px hsl(var(--primary) / 0.3);
+  }
+  50% {
+    box-shadow: 0 0 40px hsl(var(--primary) / 0.6);
   }
 }

@@ -22,10 +22,26 @@ export default {
         primary: {
           DEFAULT: "hsl(var(--primary))",
           foreground: "hsl(var(--primary-foreground))",
+          glow: "hsl(var(--primary-glow))",
+          deep: "hsl(var(--primary-deep))",
         },
         secondary: {
           DEFAULT: "hsl(var(--secondary))",
           foreground: "hsl(var(--secondary-foreground))",
+        },
+        wellness: {
+          DEFAULT: "hsl(var(--wellness))",
+          foreground: "hsl(var(--wellness-foreground))",
+          soft: "hsl(var(--wellness-soft))",
+        },
+        calm: {
+          DEFAULT: "hsl(var(--calm))",
+          foreground: "hsl(var(--calm-foreground))",
+          soft: "hsl(var(--calm-soft))",
+        },
+        support: {
+          DEFAULT: "hsl(var(--support))",
+          foreground: "hsl(var(--support-foreground))",
         },
         destructive: {
           DEFAULT: "hsl(var(--destructive))",
